@@ -1,0 +1,46 @@
+{
+    "name": "templatewizardplugins",
+    "description": "Templates wizard plugin",
+    "i18n": "templatewizardplugins/i18n/i18n",
+    "requires": {
+        "services": [
+            "template",
+            "templateCustomizationStep",
+            "filesystem.documentProvider",
+            "plugindevelopment",
+            "setting.project"            
+        ]
+    },
+    "provides": {
+        "services": {},
+        "interfaces": {}
+    },
+    "configures": {
+        "services": {
+            "template:templates": [
+                {
+                    "id": "WebIDEPlugins.rightpane",
+                    "template": "templatewizardplugins/rightpane/rightpane",
+                    "name": "{i18n>Config_template_rightpane_name}",
+                    "description": "{i18n>Config_template_rightpane_desc}",
+                    "path": "WebIDEPlugins/rightpane",
+                    "fileName": "resources.zip",
+                    "modelFileName": "model.json",
+                    "modelRoot": "rightpane",
+                    "icon": "sap-icon://detail-view",
+                    "internalOnly": false,
+                    "category": "Plugin.Dev",
+                    "wizardSteps": [
+                        "templateCustomizationStep"
+                    ],
+                    "templateType": "project",
+                    "supportedProjectTypes" : ["sap.watt.uitools.ide.plugin"],
+                    "version": "1.0.0",
+                    "orderPriority": 1000,
+                    "requiresNeoApp": true
+                }
+            ]
+        }
+    },
+    "subscribes": {}
+}

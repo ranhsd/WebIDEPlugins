@@ -1,0 +1,78 @@
+{
+	"name": "{{rightpane.parameters.name.value}}",
+	"description": "{{rightpane.parameters.description.value}}",
+	"i18n" : "{{rightpane.parameters.name.value}}/i18n/i18n",
+	"requires": {
+		"services": [
+			"usernotification",
+			"log",
+			"command",
+			"commandGroup",
+			"perspective",
+			"content",
+			"resource"
+		]
+	},
+	"provides": {
+		"services" : {
+			"rightpane" : {
+				"implements": "{{rightpane.parameters.name.value}}.service.Pane",
+				"module": "{{rightpane.parameters.name.value}}/service/Pane"
+			}
+		},
+		
+		"interfaces": {
+			"{{rightpane.parameters.name.value}}.service.Pane": "{{rightpane.parameters.name.value}}/service/Pane"
+		}	
+	},
+	"configures": {
+		"services": {
+			"rightpane:styles": [{
+				"uri" : "{{rightpane.parameters.name.value}}/css/style.css"
+			}],
+			"command:commands" : [
+				{
+					"id" : "{{rightpane.parameters.name.value}}.toggle",
+					"label": "{{rightpane.parameters.command.value}}",
+					"service" : {
+						"implements" : "sap.watt.common.service.ide.AbstractUIPartToggler",
+						"module" : "sap.watt.common.perspective/command/AbstractUIPartToggler",
+						"configuration" : { 
+							"id": "{{rightpane.parameters.name.value}}.toggle",
+							"service" : "@rightpane",
+							"perspective" : "development" 
+						}
+					},
+					"available" : true,
+					"icon" : "{{rightpane.parameters.name.value}}/img/plugin.png"
+				}
+			],
+			
+			"commandGroup:groups": [
+		
+			],
+
+			"commandGroup:items": [
+				{
+					"parent": "applicationRightSidebar",
+					"command": "{{rightpane.parameters.name.value}}.toggle",
+					"prio": "100",
+					"icon": ""
+				}
+			],
+			"perspective:views": [
+				{
+					"id": "rightpane",
+					"service": "@rightpane",
+					"area": "right",
+					"visible": "false",
+					"cssclass": "explorer splitterContainer"
+               }
+             ]			
+		}
+	},
+	"subscribes": {
+	
+	}	
+
+}

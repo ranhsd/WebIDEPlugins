@@ -1,0 +1,58 @@
+{
+	"datasource": {
+		"type": "odata",
+		"url": ""
+	},
+	"rightpane": {
+		"parameters": {
+			"name": {
+				"type": "string",
+				"value": "",
+				"wizard": {
+					"control": "TextField",
+					"required": true,
+					"title": "Plugin Name",
+					"regExp": "^[a-z0-9\\-_]*[a-z0-9\\-_\\.]+$",
+					"regExpErrMsg": "emptyPlugin_parameters_name_wizard_regExpErr"
+				}
+			},
+			"description": {
+				"type": "string",
+				"value": "",
+				"wizard": {
+					"control": "TextField",
+					"required": false,
+					"title": "Plugin Description"
+				}
+			},
+			"command": {
+				"type": "string",
+				"value": "",
+				"wizard": {
+					"control": "TextField",
+					"required": true,
+					"title": "Command Name"
+				}
+			},
+			"mvc": {
+				"type": "boolean",
+				"value": true,
+				"wizard": {
+					"control": "CheckBox",
+					"required": false,
+					"title": "Include Model View Controller Code",
+					"default": true
+				}
+			}
+		},
+		"forms": [{
+			"groups": [{
+				"title": "Basic Details",
+				"parameters": ["@rightpane.parameters.name", "@rightpane.parameters.description"]
+			}, {
+				"title": "Additional Details",
+				"parameters": ["@rightpane.parameters.command", "@rightpane.parameters.mvc"]
+			}]
+		}]
+	}
+}

@@ -1,0 +1,32 @@
+{
+  "projectType": [
+    "sap.watt.uitools.ide.plugin"
+  ],
+  "plugindevelopment": {
+    "dependencies": {
+      "all": []
+    },
+    "devUrlParameters": {
+      "sap-ide-debug": "false"
+    }
+  },
+  "generation": [
+    {
+      "templateId": "plugindevelopment.emptyPlugin",
+      "templateVersion": "1.4.0",
+      "dateTimeStamp": "Tue, 12 Apr 2016 11:48:59 GMT"
+    },
+    {
+      "templateId": "plugindevelopment.templatecomponent",
+      "templateVersion": "1.4.0",
+      "dateTimeStamp": "Tue, 12 Apr 2016 16:28:16 GMT"
+    }
+  ],
+  "translation": {
+    "translationDomain": "",
+    "supportedLanguages": "en,fr,de",
+    "defaultLanguage": "en",
+    "defaultI18NPropertyFile": "i18n.properties",
+    "resourceModelName": "i18n"
+  }
+}

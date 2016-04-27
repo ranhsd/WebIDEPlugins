@@ -1,0 +1,51 @@
+define(["sap/watt/common/plugin/platform/service/ui/AbstractPart"], function(AbstractPart) {
+	"use strict";
+
+	var Pane = AbstractPart.extend("{{rightpane.parameters.name.value}}.service.Pane", {
+		{{#if rightpane.parameters.mvc.value}}
+		_oPainView: null,
+		{{~/if}}
+
+		init: function() {
+		},
+
+		configure: function(mConfig) {
+			// include style sheet resources
+			this.context.service.resource.includeStyles(mConfig.styles).done();
+		},
+
+		getContent: function() {
+			{{#if rightpane.parameters.mvc.value}}
+			if (this._oPainView === null) {
+				this._oPainView = sap.ui.view({
+					viewName: "{{rightpane.parameters.name.value}}.view.Pane",
+					type: sap.ui.core.mvc.ViewType.JS,
+					viewData: {
+						context: this.context
+					}
+				}).addStyleClass("rp-main-view");
+				
+			}
+			return this._oPainView;
+			{{~else}}
+			var oButton = new sap.ui.commons.Button({
+				text: "Hello World"	
+			});
+			
+			return oButton;			
+			{{~/if}}
+		},
+
+		isEnabled: function(oDocument) {
+			return true;
+		},
+
+		isAvailable: function(oDocument) {
+			return true;
+		}
+
+	});
+		
+	return Pane;
+
+});
